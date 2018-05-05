@@ -2,20 +2,83 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.madonasyombua.growwithgoogleteamproject">
 
+    <!-- Internet permission -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+        <!-- Facebook meta data -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+   <!--Start Login after test -->
+        <activity
+            android:name=".activities.LoginActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+       <activity
+            android:name=".activities.MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.intro.OnBoardingActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.InterestActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.ProjectsActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".activities.PostActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.AboutActivity"
+            />
+        <activity
+            android:name=".activities.HelpActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="@string/help"/>
+        <activity android:name=".activities.ManageProfileActivity" />
+        <activity android:name=".activities.MessageActivity"></activity>
     </application>
 
 </manifest>
